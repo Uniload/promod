@@ -12,8 +12,6 @@ simulated function int getMaxAmmo(class<Weapon> weaponClass){
 simulated event BreakGrapple()
 {
 	// call this when the grapple breaks because it will play the breaking sound
-
-
 	if (Grappler(weapon) != None)
 		Grappler(weapon).lastFireTime = Level.TimeSeconds - 0.5;
 
@@ -26,33 +24,32 @@ simulated event BreakGrapple()
 
 simulated event OnMovementCollisionDamage(float damage)
 {
+	local class<MovementCollisionDamageType> collisionDamageType;
 
-    local class<MovementCollisionDamageType> collisionDamageType;
 	damage *= fallDamageModifier;
-    if (blockMovementDamage)
-        return;
+	if (blockMovementDamage)
+		return;
 
-    if (level.timeSeconds<lastMovementDamageTime+0.1)
-        return;
-        
-    if (movement==MovementState_Elevator)       // no damage in elevator volumes
-        return;
-    
-    // determine collision damage type
-    
-    collisionDamageType = class'MovementCollisionDamageType';
-                                                                                                            
-    if (armorClass!=None && armorClass.default.movementDamageTypeClass!=none)
-        collisionDamageType = armorClass.default.movementDamageTypeClass; 
-	
+	if (level.timeSeconds<lastMovementDamageTime+0.1)
+		return;
+
+	if (movement==MovementState_Elevator)
+		return;
+
+	// determine collision damage type
+	collisionDamageType = class'MovementCollisionDamageType';
+
+	if (armorClass!=None && armorClass.default.movementDamageTypeClass!=none)
+		collisionDamageType = armorClass.default.movementDamageTypeClass;
+
 	TakeDamage(damage, self, vect(0,0,0), vect(0,0,0), collisionDamageType);
 
-    PlayEffect("MovementCollisionDamage", DamageTag(damage));
+	PlayEffect("MovementCollisionDamage", DamageTag(damage));
 
-    lastMovementDamageTime = level.timeSeconds;
+	lastMovementDamageTime = level.timeSeconds;
 }
 
 defaultproperties
 {
-fallDamageModifier=0.900000
+	fallDamageModifier=1.000000
 }

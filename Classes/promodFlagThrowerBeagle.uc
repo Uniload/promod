@@ -6,23 +6,22 @@ var config int FlagVelocity;
 function PostBeginPlay()
 {
 	Super.PostBeginPlay();
-        SetFlagThrow();
+	SetFlagThrow();
 }
 
 function SetFlagThrow()
-
 {
-        local promodFlagThrowerBeagle BEFlag;
-        foreach AllActors(class'promodFlagThrowerBeagle', BEFlag)
-        	if(BEFlag != None)
-            {
-		BEFlag.projectileInheritedVelFactor = FlagInheritedVelocity;//was .8
-                BEFlag.projectileVelocity = FlagVelocity;//was 800
-					}
+	local promodFlagThrowerBeagle BEFlag;
+	foreach AllActors(class'promodFlagThrowerBeagle', BEFlag)
+		if(BEFlag != None)
+		{
+			BEFlag.projectileInheritedVelFactor = FlagInheritedVelocity;
+			BEFlag.projectileVelocity = FlagVelocity;
+		}
 }
 
 defaultproperties
 {
-FlagInheritedVelocity=0.600000
-FlagVelocity=1400.000000
+	FlagInheritedVelocity=0.600000
+	FlagVelocity=1400.000000
 }

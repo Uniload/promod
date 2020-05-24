@@ -1,26 +1,21 @@
 class promodProjectileMortar extends EquipmentClasses.ProjectileMortar;
 
+// Removed simulation to avoid displaying "non-reg" projectile explosions
 function ProjectileTouch(Actor Other, vector TouchLocation, vector TouchNormal)
 {
-       super.ProjectileTouch(Other, TouchLocation, TouchNormal);
+	super.ProjectileTouch(Other, TouchLocation, TouchNormal);
 }
 
 simulated function bool projectileTouchProcessing(Actor Other, vector TouchLocation, vector TouchNormal)
 {
-	if (Other.IsA('BaseCatapult'))
+	if (Other.IsA('BaseCatapult') || Other.IsA('DeployedCatapult'))
 	{
 		return false;
 	}
-        if (Other.IsA('DeployedCatapult'))
-	{
-		return false;
-	}
-	return true;
-	super.projectileTouchProcessing(Other, TouchLocation, TouchNormal);
+	return super.projectileTouchProcessing(Other, TouchLocation, TouchNormal);
 }
 
 defaultproperties
 {
-      LifeSpan=11.000000
+	LifeSpan=11.000000
 }
-

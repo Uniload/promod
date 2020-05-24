@@ -38,7 +38,7 @@ var(Promod) config Array<class<Actor> > DisabledActors;
 var(BaseDevices) config bool disableBaseRape;
 var(BaseDevices) config Array<class<BaseDevice> > BaseRapeProtectedDevices;
 
-var(Promod) config class<Gameplay.CombatRole> SpawnCombatRole;
+var(Promod) config class<CombatRole> SpawnCombatRole;
 var(Promod) config int SpawnInvincibility;
 
 // ============================================================================
@@ -98,13 +98,13 @@ function ModifyCharacters()
 
 function ModifyPlayerStart()
 {
-	 local Gameplay.MultiPlayerStart Start;
+	local Gameplay.MultiPlayerStart Start;
 
-	 forEach AllActors(class'Gameplay.MultiPlayerStart', Start)
-	 {
+	forEach AllActors(class'Gameplay.MultiPlayerStart', Start)
+	{
 		Start.combatRole = SpawnCombatRole;
 		Start.invincibleDelay = SpawnInvincibility;
-	 }
+	}
 }
 
 function ModifyFlagThrower()
@@ -131,18 +131,15 @@ function ModifyVehicles()
 	{
 		switch (vehiclePad.vehicleClass) {
 			case class'VehicleClasses.VehiclePod':
-				vehiclePad.setSwitchedOn(enableFighterPod);
-				vehiclePad.vehicleClass = class'FighterPod';
+				vehiclePad.setSwitchedOn(EnablePod);
 				break;
 
 			case class'VehicleClasses.VehicleAssaultShip':
 				vehiclePad.setSwitchedOn(enableAssaultShip);
-				vehiclePad.vehicleClass = class'AssaultShip';
 				break;
 
 			case class'VehicleClasses.VehicleTank':
 				vehiclePad.setSwitchedOn(enableTank);
-				vehiclePad.vehicleClass = class'JumpTank';
 				break;
 
 			case class'VehicleClasses.VehicleBuggy':
@@ -208,8 +205,8 @@ function Actor ReplaceActor(Actor Other)
 			if (replaceBurnerWithPlasma)
 			{
 				WeaponBurner(Other).projectileClass = Class'promodProjectilePlasma';
-				WeaponBurner(Other).projectileInheritedVelFactor = PlasmaPIVF; //was .4
-				WeaponBurner(Other).projectileVelocity = PlasmaVelocity; //was 4700
+				WeaponBurner(Other).projectileInheritedVelFactor = PlasmaPIVF;
+				WeaponBurner(Other).projectileVelocity = PlasmaVelocity;
 				WeaponBurner(Other).energyUsage = PlasmaEnergyUsage;
 				WeaponBurner(Other).localizedname = "Plasma gun";
 			}
@@ -228,12 +225,11 @@ function Actor ReplaceActor(Actor Other)
 
 		case Other.IsA('Grappler'):
 			if(EnableDegrapple)
-				Gameplay.Grappler(Other).projectileClass = Class'promodDegrappleProjectile';
+				Grappler(Other).projectileClass = Class'promodDegrappleProjectile';
 			else
-				Gameplay.Grappler(Other).projectileClass = Class'Gameplay.GrapplerProjectile';
-
-			Gameplay.Grappler(Other).reelInDelay = GrapplerReelRate;
-			Gameplay.Grappler(Other).roundsPerSecond = GrapplerRPS;
+				Grappler(Other).projectileClass = Class'Gameplay.GrapplerProjectile';
+			Grappler(Other).reelInDelay = GrapplerReelRate;
+			Grappler(Other).roundsPerSecond = GrapplerRPS;
 			break;
 
 		case Other.IsA('CatapultDeployable'):

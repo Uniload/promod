@@ -2,5 +2,5 @@ class promodDamageTypeChaingun extends EquipmentClasses.ProjectileDamageTypeChai
 
 defaultproperties
 {
-     vehicleDamageModifier=0.600000
+	vehicleDamageModifier=0.600000
 }

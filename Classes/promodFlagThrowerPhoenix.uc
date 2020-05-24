@@ -6,23 +6,22 @@ var config int FlagVelocity;
 function PostBeginPlay()
 {
 	Super.PostBeginPlay();
-        SetFlagThrow();
+	SetFlagThrow();
 }
 
 function SetFlagThrow()
-
 {
-        local promodFlagThrowerPhoenix PnxFlag;
-        foreach AllActors(class'promodFlagThrowerPhoenix', PnxFlag)
-        	if(PnxFlag != None)
-                {
-		PnxFlag.projectileInheritedVelFactor = FlagInheritedVelocity;//was .8
-                PnxFlag.projectileVelocity = FlagVelocity;//was 800
-	        }
+	local promodFlagThrowerPhoenix PnxFlag;
+	foreach AllActors(class'promodFlagThrowerPhoenix', PnxFlag)
+		if(PnxFlag != None)
+		{
+			PnxFlag.projectileInheritedVelFactor = FlagInheritedVelocity;
+			PnxFlag.projectileVelocity = FlagVelocity;
+		}
 }
 
 defaultproperties
 {
-FlagInheritedVelocity=0.600000
-FlagVelocity=1400.000000
+	FlagInheritedVelocity=0.600000
+	FlagVelocity=1400.000000
 }

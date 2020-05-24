@@ -2,11 +2,13 @@ class promodProjectilePlasma extends EquipmentClasses.ProjectileBurner config(pr
 
 var bool bEndedLife;
 
-var() float radiusDamageAmt; 
+var() float radiusDamageAmt;
 var() float radiusDamageSize;
 var() float radiusDamageMomentum;
 
-function ProjectileTouch(Actor Other, vector TouchLocation, vector TouchNormal){
+// Removed simulation to avoid displaying "non-reg" projectile explosions
+function ProjectileTouch(Actor Other, vector TouchLocation, vector TouchNormal)
+{
 	super.ProjectileTouch(Other, TouchLocation, TouchNormal);
 }
 
@@ -44,16 +46,16 @@ simulated function BurnTarget(Rook target)
 
 defaultproperties
 {
-     radiusDamageAmt=50.000000
-     radiusDamageSize=400.000000
-     ignitionDelay=4.25000000
-     burningAreaClass=Class'promodPlasmaArea'
-     damageAmt=0.000000
-     bDeflectable=False
-     knockbackAliveScale=1.000000
-     StaticMesh=None
-     LifeSpan=4.250000
-     DrawScale3D=(Z=2.000000)
-     CollisionRadius=30.000000
-     CollisionHeight=30.000000
+	radiusDamageAmt=50.000000
+	radiusDamageSize=400.000000
+	ignitionDelay=4.25000000
+	burningAreaClass=Class'promodPlasmaArea'
+	damageAmt=0.000000
+	bDeflectable=False
+	knockbackAliveScale=1.000000
+	StaticMesh=None
+	LifeSpan=4.250000
+	DrawScale3D=(Z=2.000000)
+	CollisionRadius=30.000000
+	CollisionHeight=30.000000
 }

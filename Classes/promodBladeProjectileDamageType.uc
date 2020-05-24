@@ -2,9 +2,8 @@ class promodBladeProjectileDamageType extends EquipmentClasses.ProjectileDamageT
 
 defaultproperties
 {
-     headDamageModifier=1.000000
-     backDamageModifier=1.000000
-     vehicleDamageModifier=1.000000
-     deathMessageIconMaterial=Texture'GUITribes.InvButtonBlade'
+	headDamageModifier=1.000000
+	backDamageModifier=1.000000
+	vehicleDamageModifier=1.000000
+	deathMessageIconMaterial=Texture'GUITribes.InvButtonBlade'
 }
-

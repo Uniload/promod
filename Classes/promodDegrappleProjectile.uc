@@ -6,10 +6,10 @@ var float burningDamagerPerSecond;
 function PostTakeDamage(float Damage, Pawn EventInstigator, vector HitLocation, vector Momentum, class<DamageType> DamageType, optional float projectileFactor)
 {
 	Health -= Damage;
-	
+
 	if(Health <= 0)
 		Destroy();
-		
+
 	Super.PostTakeDamage(Damage, EventInstigator, HitLocation, Momentum, DamageType, projectileFactor);
 }
 
@@ -26,8 +26,8 @@ simulated function simulatedAttach(Actor Other, vector TouchLocation)
 
 defaultproperties
 {
-     Health=30.000000
-     burningDamagerPerSecond=55.000000
-     bCanBeDamaged=True
-     bProjTarget=True
+	Health=30.000000
+	burningDamagerPerSecond=55.000000
+	bCanBeDamaged=True
+	bProjTarget=True
 }

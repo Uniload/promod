@@ -28,7 +28,7 @@ function Timer()
 
 defaultproperties
 {
-     burnTime=0.200000
-     LifeSpan=0.200000
-     bCollideActors=False
+	burnTime=0.200000
+	LifeSpan=0.200000
+	bCollideActors=False
 }

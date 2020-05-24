@@ -6,23 +6,22 @@ var config int FlagVelocity;
 function PostBeginPlay()
 {
 	Super.PostBeginPlay();
-        SetFlagThrow();
+	SetFlagThrow();
 }
 
 function SetFlagThrow()
-
 {
-        local promodFlagThrowerImperial ImpFlag;
-        foreach AllActors(class'promodFlagThrowerImperial', ImpFlag)
-        	if(ImpFlag != None)
-                {
-		ImpFlag.projectileInheritedVelFactor = FlagInheritedVelocity;//was .8
-                ImpFlag.projectileVelocity = FlagVelocity;//was 800
-	        }
+	local promodFlagThrowerImperial ImpFlag;
+	foreach AllActors(class'promodFlagThrowerImperial', ImpFlag)
+		if(ImpFlag != None)
+		{
+			ImpFlag.projectileInheritedVelFactor = FlagInheritedVelocity;
+			ImpFlag.projectileVelocity = FlagVelocity;
+		}
 }
 
 defaultproperties
 {
-FlagInheritedVelocity=0.600000
-FlagVelocity=1400.000000
+	FlagInheritedVelocity=0.600000
+	FlagVelocity=1400.000000
 }
